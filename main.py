@@ -177,7 +177,7 @@ def register():
                 # send otp 
                 sender_email = "black4tiles@gmail.com"
                 receiver_email = user_data[2]
-                password = "piastrellenere?mean4805"
+                password = "password"
                 message = MIMEMultipart("alternative")
                 message["Subject"] = "OTP verification"
                 message["From"] = sender_email
