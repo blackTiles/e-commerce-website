@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='js/ajax2.js')}}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+</head>
+<body class="container">
+    <div class="cart-first">
+        <div class="inner-box-one">
+            <div class="heading">Cart</div>
+            <a href="/">Back To Shopping</a>
+        </div>
+    </div>
+    <div class="cart-second d-flex flex-column justify-content-center">
+        <h2 class="text-center text-light">Items In Cart</h2>
+        <div class="d-flex flex-row flex-wrap" style="position: relative;">
+          {% for z in cart_list[0] %}
+          <div id="idItem{{z[0]}}" style="display: block; width:100%;">
+            <div class="card d-flex flex-row flex-wrap justify-content-center align-items-center container"  style="width: auto;box-shadow:0px 0px 10px" >
+                <img class="card-img-top" src="data:image/png;charset=utf-8;base64,{{z[1]}}"  style="width:200px;height:250px" alt="Card image cap">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <!-- <h5 class="card-title">Card title</h5> -->
+                <p class="card-text">{{z[3]}}</p>
+                </div>
+                <ul class="list-group list-group-flush d-flex flex-column justify-content-center align-items-center" style="padding-bottom: 40px;">
+                <li class="list-group-item">Quantity :- 1</li>
+                <li class="list-group-item">Color :- Black</li>
+                <li class="list-group-item">Price :- &#8377;{{z[4]}}</li>
+                </ul>
+                <div class="text-center" style="position: absolute;bottom:0;background:rgb(21, 154, 187);width:100%;padding:10px 0px;">
+                <!-- <a href="#" class="card-link">Card link</a> -->
+                <a class="card-link text-light dropItem" item_id="{{z[0]}}" style="cursor: pointer;">Drop This Item</a>
+                </div>
+            </div>
+          </div>
+          {% endfor %}
+            
+        </div>
+    </div>
+    <br><br>
+    {% if cart_list[0] %}
+    <div class="cart-third" id="shippingAddress">
+        <form action="/confirm_the_order" method="post">
+            <h1 class="text-center text-light">Shipping Address</h1>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4" class="text-light">Name</label>
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Full Name" name="full_name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4" class="text-light">Phone Number</label>
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Mobile Number" name="phone_number">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress" class="text-light">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address1">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2" class="text-light">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity" class="text-light">City</label>
+                <input type="text" class="form-control" id="inputCity" name="city">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState" class="text-light">State</label>
+                <select id="inputState" class="form-control" name="state">
+                    <option selected>Choose...</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip"class="text-light">Zip</label>
+                <input type="text" class="form-control" id="inputZip" name="zip">
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-header">Payment Method</h5>
+              <div class="card-body">
+                <h5 class="card-title">Cash On Delivery</h5>
+                <h6 class="card-text">Total Amount</h6>
+                <h5 class="card-title" id="totalPrice">₹{{cart_list[2]}}</h5>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-danger container">Confirm Your Order</button>
+          </form>
+          
+    </div>
+    {% else %}
+    <h1 class="text-center text-light">You currently don't have any items in your Cart</h1>
+    {% endif %}
+    <div class="cart-fourth">
+
+    </div>
+    <script src="../static/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+</body>
+</html>

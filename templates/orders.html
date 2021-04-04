@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='js/ajax2.js')}}"></script>
+    <style>
+        body {
+            background-color: #eeeeee
+        }
+        
+        .green {
+            color: rgb(15, 207, 143);
+            font-weight: 680
+        }
+        
+        @media(max-width:567px) {
+            .mobile {
+                padding-top: 40px
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container rounded bg-white">
+        <div class="py-4 d-flex justify-content-end">
+            <h6><a href="/">Back to Shopping</a></h6>
+        </div>
+        {% if order %}
+        {% for l in order %}
+        <div id="order_{{l.order_id}}">
+            <div class="row d-flex justify-content-center pb-5">
+                <div class="col-sm-5 col-md-5 ml-1">
+                    <div class="py-4 d-flex flex-row">
+                        <h5><span class="fa fa-check-square-o"></span><b>Your</b> | </h5><span class="pl-2">ORDER</span>
+                    </div>
+                    
+                    <h4>{{l.name_of_items}}</h4>
+                    <div class="d-flex pt-2">
+                        <div>
+                            <p><b>Shipping Address</b><span class="green">|</span></p>
+                        </div>
+                    </div>
+                    <p>{{l.full_address}}</p>
+                    <div class="rounded bg-light d-flex">
+                        <div class="p-2">Date Of Order</div>
+                        <div class="ml-auto p-2">{{l.order_date}}</div>
+                    </div>
+                    <hr>
+                    <div class="pt-2">                       
+                        <p class="text-center">Expected to be delivered within 7 days</p>                    
+                        <div><a  class="cancelOrder" _orderID="{{l.order_id}}"><input type="button" value="Cancel this Order" class="btn btn-primary btn-block"></a></div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-4 offset-md-1 mobile">
+                    
+                    <div class="bg-light rounded d-flex flex-column">
+                        <div class="p-2 ml-3">
+                            <h4>Order Recap</h4>
+                        </div>
+                        <div class="p-2 d-flex">
+                            <div class="col-8">Contracted Price</div>
+                            <div class="ml-auto">&#8377;{{l.total_price}}</div>
+                        </div>
+                        <div class="p-2 d-flex">
+                            <div class="col-8">SGST</div>
+                            <div class="ml-auto">&#8377;0.00</div>
+                        </div>
+                        <div class="p-2 d-flex">
+                            <div class="col-8">CGST</div>
+                            <div class="ml-auto">&#8377;0.00</div>
+                        </div>
+                        <div class="p-2 d-flex">
+                            <div class="col-8">Discount</div>
+                            <div class="ml-auto">0.00</div>
+                        </div>
+                        <div class="border-top px-4 mx-3"> </div>
+                        
+                        <div class="border-top px-4 mx-3"></div>
+                        <div class="p-2 d-flex pt-3">
+                            <div class="col-8"><b>Total</b></div>
+                            <div class="ml-auto"><b class="green">&#8377;{{l.total_price}}</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        {% endfor %}
+        {% else %}
+            <h1 class="text-center text-primary">You haven't ordered anything yet</h1>
+        {% endif %}
+    </div>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <h1>Admin Panel</h1><br>
+            <select name="category" id="">
+                <option disabled selected>Select Category</option>
+                <option value="new">New Arrivals</option>
+                <option value="men">Men's Collection</option>
+                <option value="women">Women's Collection</option>
+                <option value="kids">Kids</option>
+            </select><br>
+            <input type="file" name="filename" id=""><br>
+            <label for="description">Product Description</label>
+            <input type="text" name="description" id=""><br>
+            <label for="price">Price</label>
+            <input type="text" name="price" id=""><br>
+            <input type="submit" value="Submit">
+            <a href="/admin_logout">Admin Logout</a>
+        </form>
+    </div>
+
+</body>
+
+</html>

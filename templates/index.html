@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+   <script src="{{url_for('static', filename='js/ajax2.js')}}"></script>
+   <title>Document</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+<body>
+   <div class="box-main">
+      <div class="inner-box-one">
+         <div class="heading">blackTiles</div>
+         <ul>
+            <a href="/products"><li>Products</li></a>
+            <a href="#about-section"><li>About Us</li></a>
+            <a href="#contact-section"><li>Contact</li></a>
+            <a class="admin-panel1"><li>Admin Panel</li></a>
+         </ul>
+         <ul class="nav-mobile" id="mobile-nav">
+            <i class="fas fa-times" id="close-btn"></i>
+            <a href="/products" id="mobile-li-one"><li>Products</li></a>
+            <a  id="mobile-li-two" ><li>About Us</li></a>
+            <a  id="mobile-li-three"><li>Contact</li></a>
+            <a class="admin-panel2"><li>Admin Panel</li></a>
+         </ul>
+         <div class="hamburger" id="ham-burger"><i class="fas fa-bars"></i></div>
+         <div class="admin-panel-form">
+            <form action="/validate" method="post">
+               <i class="fas fa-times" id="closeAdmin"></i>
+               <i class="fas fa-users-cog"></i>
+               <label for="passkey">Enter the Passkey</label>
+               <input type="password" name="passkey" id="" autofocus>
+               <button type="submit">Validate</button>
+            </form>
+         </div>
+      </div>
+      <div class="inner-box-two" id="login-box">
+         <div class="inner-box-left">
+            <form id="loginForm">
+               <h2>Login</h2>
+               <br>
+               <label for="login_email">Email</label>
+               <input type="email" name="login_email" id="inputEmail">
+               <br>
+               <label for="login_password">Password</label>
+               <input type="password" name="login_password" id="inputPassword">
+               <p class="text-danger" id="alert-user" style="color: red; padding:5px 0px;"></p>
+               <button type="submit">Login</button>
+               <br>
+               <span id="signup-pipe" onclick="goToSignUp()">Create an account</span>
+            </form>
+         </div>
+         <div class="inner-box-right">
+            <img src="{{url_for('static', filename='images/logo.png')}}" alt="">
+         </div>
+      </div>
+      
+      <div class="inner-box-two" id="signup-box">
+         <div class="inner-box-right">
+            <img src="{{url_for('static', filename='images/logo.png')}}" alt="">
+         </div>
+         <div class="inner-box-left">
+            <form id="registerForm">
+               <h2>Register</h2>
+               <br>
+               <label for="username">Username</label>
+               <input type="text" name="username" id="sign_user">
+               <br>
+               <label for="email">Email</label>
+               <input type="email" name="email" id="sign_email">
+               <br>
+               <label for="password">Password</label>
+               <input type="password" name="password" id="sign_pass">
+               <p class="text-danger" id="alert-sign-user" style="color: red; padding:5px 0px;"></p>
+               <button type="submit">Sign Up</button>
+               <br>
+               <span id="login-pipe" onclick="goToLogIn()">Have an account? Login</span>
+            </form>
+         </div>
+      </div>
+      <div class="inner-box-three">
+         <h1>E-COMMERCE</h1>
+         <p>“There is a spiritual aspect to our lives – when we give, we receive – when a business does something good for somebody, that somebody feels good about them!”</p>
+      </div>
+      <div class="inner-box-four" id="about-section">
+         <h1>About Us</h1>
+         <br><br>
+         <div class="box-four-inner1">
+            <div class="image-cube">
+               <img src="{{url_for('static', filename='images/cube.png')}}" alt="">
+
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam nihil cumque aliquam! Iusto, dolores. Et deserunt aperiam accusantium voluptatum dolorem qui illum doloremque ratione nobis sed debitis molestias numquam, blanditiis, laudantium, vitae obcaecati repellat maxime labore perspiciatis atque! Omnis id aperiam culpa nisi quo laudantium fugit eaque velit provident minus, ut dolorem aspernatur corporis, expedita incidunt ullam ipsum blanditiis! Sunt minima at numquam excepturi modi nulla eos. Assumenda delectus unde tenetur temporibus quos. Optio assumenda facilis a consequatur quos doloremque accusamus quia fugit adipisci cumque aliquam amet omnis quisquam dolor perspiciatis, aliquid laborum iste fugiat modi? Architecto recusandae ullam magnam?</p>
+         </div>
+      </div>
+      <div class="inner-box-five" id="contact-section">
+         <h1>Conatct</h1>
+         <br><br>
+         <div class="box-five-inner">
+            <div class="social-media-box">
+               <a href="https://www.instagram.com/code.hubx/" style="color: white;" target="_blank"><div class="media1"><i class="fab fa-instagram"></i></div></a>
+               <a href="https://www.facebook.com/profile.php?id=100052432216657" style="color: white;" target="_blank"><div class="media2"><i class="fab fa-facebook"></i></div></a>
+               <a href="https://www.youtube.com/channel/UCjvlyIXVjKp9dFKS-PAsfPA" style="color: white;" target="_blank"><div class="media3"><i class="fab fa-youtube"></i></div></a>
+               <a href="https://twitter.com/SatyamR80919798" style="color: white;"><div class="media4" target="_blank"><i class="fab fa-twitter"></i></div></a>
+            </div>
+            <div class="message-box">
+               <form action="" method="post" id="feedback">
+                  <span>Message</span><br>
+                  <label for="msg_name">Name</label>
+                  <input type="text" name="" id="sender_name"><br>
+                  <label for="msg_email">Email</label>
+                  <input type="email" name="" id="sender_email"><br>
+                  <label for="msg_message">Message</label>
+                  <textarea name="msg_message" id="sender_msg" cols="30" rows="10"></textarea>
+                  <p class="text-danger" id="alert-feedback" style="color: rgb(2, 183, 255); padding:5px 0px;"></p>
+                  <button type="submit">Send</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,288L80,256C160,224,320,160,480,154.7C640,149,800,203,960,224C1120,245,1280,235,1360,229.3L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
