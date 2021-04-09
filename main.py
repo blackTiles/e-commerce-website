@@ -387,8 +387,8 @@ def feedback():
         if not sender_msg:
             return jsonify({'empty':'Message is missing'})
         else:
-            account_sid = 'AC7b7eba1c290afbf3365bc5139e0b956a' 
-            auth_token = '997e66e7ae1f9c1242b855ff07137e9e' 
+            account_sid = 'ba1c290afbf336a' 
+            auth_token = 'c1242b855ff07137' 
             client = Client(account_sid, auth_token) 
             message = client.messages.create( 
                                         from_='+13212412340',  
